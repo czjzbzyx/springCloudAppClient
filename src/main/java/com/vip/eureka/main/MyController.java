@@ -10,6 +10,7 @@ import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
@@ -34,13 +35,24 @@ public class MyController {
 	}
 	
 	
-	
+	  @Autowired
+	 public ExamPleMapper examPleMapper;
 	
 	
 	@Autowired
 	private DiscoveryClient discoveryClient;
 	
 	
+	
+	
+	 @ResponseBody
+	    @RequestMapping(value="/gu")
+	    public List<MyDataSource> getUsers(){
+	        return examPleMapper.getDs();
+	    }
+	 
+	 
+	 
 	@RequestMapping("/services")
 	public List<String> genericScheduledExecutorService(){
 		
