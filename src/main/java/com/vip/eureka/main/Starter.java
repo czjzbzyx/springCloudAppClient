@@ -22,7 +22,8 @@ import org.springframework.context.ConfigurableApplicationContext;
 @EnableHystrix
 @EnableHystrixDashboard
 @EnableZuulProxy
-@MapperScan(value="com.vip.eureka.main")
+@MapperScan(value="com.vip.eureka.mapper")
+//org.mybatis.spring.mapper.MapperScannerConfigurer
 public class Starter {
 	
 

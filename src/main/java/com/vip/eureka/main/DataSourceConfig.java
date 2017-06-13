@@ -32,8 +32,8 @@ public class DataSourceConfig {
 	    }
 	
 	
-	@Bean(name="sqlSessionFactory")
-    public SqlSessionFactoryBean sqlSessionFactory() throws IOException{
+	@Bean(name="sqlSessionFactoryBean")
+    public SqlSessionFactoryBean sqlSessionFactoryBean() throws IOException{
         SqlSessionFactoryBean sqlSessionFactory = new SqlSessionFactoryBean();
         sqlSessionFactory.setDataSource(dataSource());
         

@@ -3,9 +3,15 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.vip.eureka.main.ExamPleMapper">
+<mapper namespace="com.vip.eureka.mapper.ExamPleMapper">
     <select id="getDs" resultType="com.vip.eureka.main.MyDataSource">
         select * from t_data_source
     </select>
+    
+    
+    
+     <update id="updateById" parameterType="java.lang.Long">
+        update t_data_source set remark='lizi' where id =#{id}
+    </update>
 </mapper>
 

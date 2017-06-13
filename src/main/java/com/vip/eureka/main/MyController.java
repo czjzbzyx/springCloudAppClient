@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,10 +34,9 @@ public class MyController {
 		
 		return server.sayHi();
 	}
+
 	
-	
-	  @Autowired
-	 public ExamPleMapper examPleMapper;
+	private @Autowired DataSourceService dataSourceService;
 	
 	
 	@Autowired
@@ -46,9 +46,18 @@ public class MyController {
 	
 	
 	 @ResponseBody
-	    @RequestMapping(value="/gu")
+	    @RequestMapping(value="/getDs")
 	    public List<MyDataSource> getUsers(){
-	        return examPleMapper.getDs();
+	        return dataSourceService.getDs();
+	    }
+	 
+	 
+	 @ResponseBody
+	    @RequestMapping(value="/{id}")
+	    public String updateById(@PathVariable Long id)throws Exception{
+		 dataSourceService.updateById(id);
+	         
+	         return "success";
 	    }
 	 
 	 
