@@ -7,6 +7,6 @@ public interface DataSourceService {
 	public void updateById(Long id) throws Exception;
 	
 	
-	public List<MyDataSource> getDs();
+	public List<MyDataSource> getDs( Integer pageNum, Integer pageSize);
 
 }

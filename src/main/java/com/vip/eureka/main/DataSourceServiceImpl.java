@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.github.pagehelper.PageHelper;
 import com.vip.eureka.mapper.ExamPleMapper;
 
 @Component
@@ -45,8 +46,9 @@ public class DataSourceServiceImpl implements DataSourceService {
 
 
 	@Override
-	public List<MyDataSource> getDs() {
-		
+	public List<MyDataSource> getDs( Integer pageNum, Integer pageSize) {
+		PageHelper.clearPage();
+		 PageHelper.startPage(pageNum,pageSize,false);
 		return examPleMapper.getDs();
 	}
 	

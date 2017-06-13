@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import com.github.pagehelper.PageHelper;
+
 /**
  * @author fang08.li
  *
@@ -46,9 +48,12 @@ public class MyController {
 	
 	
 	 @ResponseBody
-	    @RequestMapping(value="/getDs")
-	    public List<MyDataSource> getUsers(){
-	        return dataSourceService.getDs();
+	    @RequestMapping(value="/getDs/{pageNum}/{pageSize}")
+	    public List<MyDataSource> getUsers(@PathVariable Integer pageNum,@PathVariable Integer pageSize){
+		 
+		
+		 
+	        return dataSourceService.getDs(  pageNum,  pageSize);
 	    }
 	 
 	 

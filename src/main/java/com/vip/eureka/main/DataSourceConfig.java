@@ -1,9 +1,12 @@
 package com.vip.eureka.main;
 
 import java.io.IOException;
+import java.util.Properties;
 
 import javax.sql.DataSource;
 
+import org.apache.ibatis.plugin.Interceptor;
+import org.apache.ibatis.plugin.Invocation;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -18,6 +21,8 @@ import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInterceptor;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 @Configuration
@@ -42,6 +47,15 @@ public class DataSourceConfig {
         
         sqlSessionFactory.setMapperLocations(resolver.getResources("classpath:mapper/*.xml"));
         
+        
+//        PageInterceptor pagePlugin=new PageInterceptor();
+//        
+//        Properties properties=new Properties();
+//        
+//        properties.setProperty("dialect", "com.github.pagehelper.dialect.helper.MySqlDialect");
+//        
+//        pagePlugin.setProperties(properties);
+//        sqlSessionFactory.setPlugins(new Interceptor[]{pagePlugin});
         return sqlSessionFactory;
     }
 	
