@@ -4,6 +4,8 @@
 package com.vip.eureka.main;
 
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
+import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
@@ -29,13 +31,34 @@ public class Starter {
 
 	/**
 	 * @param args
+	 * @throws InterruptedException 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 
 		
-		ConfigurableApplicationContext run = SpringApplication.run(Starter.class, args);
+		ConfigurableApplicationContext ctx = SpringApplication.run(Starter.class, args);
 		
-		System.out.println(run.getClass());
+		
+		Object bean = ctx.getBean("step1");
+		if(bean!=null){
+			
+			System.out.println(bean.getClass());
+			bean=null;
+		}
+		
+		Thread.sleep(5000);
+		Object bean2 = ctx.getBean("step1");
+		if(bean2!=null){
+			
+			System.out.println(bean2.getClass());
+			bean2=null;
+		}
+		
+		BeanDefinitionRegistry beanFactory = (BeanDefinitionRegistry)ctx.getBeanFactory();
+		
+		beanFactory.removeBeanDefinition("step1");
+		
+		System.out.println(ctx.getClass());
 	}
 	
 
