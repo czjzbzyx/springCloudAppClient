@@ -4,7 +4,6 @@
 package com.vip.eureka.main;
 
 import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,6 +12,7 @@ import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 
 /**
  * @author fang08.li
@@ -24,7 +24,10 @@ import org.springframework.context.ConfigurableApplicationContext;
 @EnableHystrix
 @EnableHystrixDashboard
 @EnableZuulProxy
+@ComponentScan("com.vip.eureka.lifecycle")
+@ComponentScan("com.vip.eureka.main")
 @MapperScan(value="com.vip.eureka.mapper")
+
 //org.mybatis.spring.mapper.MapperScannerConfigurer
 public class Starter {
 	

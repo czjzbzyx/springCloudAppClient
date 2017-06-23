@@ -1,4 +1,4 @@
-package com.vip.eureka.main;
+package com.vip.eureka.lifecycle;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

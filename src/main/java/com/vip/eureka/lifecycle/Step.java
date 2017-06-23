@@ -1,4 +1,4 @@
-package com.vip.eureka.main;
+package com.vip.eureka.lifecycle;
 
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.context.SmartLifecycle;
