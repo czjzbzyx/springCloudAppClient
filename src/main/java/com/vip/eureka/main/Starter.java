@@ -13,6 +13,9 @@ import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboar
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.FilterType;
+
+import com.vip.eureka.exclude.Exclude;
 
 /**
  * @author fang08.li
@@ -26,6 +29,7 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableZuulProxy
 @ComponentScan("com.vip.eureka.lifecycle")
 @ComponentScan("com.vip.eureka.main")
+@ComponentScan(value="com.vip.eureka.exclude",excludeFilters={@ComponentScan.Filter(type= FilterType.ANNOTATION,value={Exclude.class})})
 @MapperScan(value="com.vip.eureka.mapper")
 
 //org.mybatis.spring.mapper.MapperScannerConfigurer
