@@ -29,6 +29,8 @@ import com.vip.eureka.exclude.Exclude;
 @EnableZuulProxy
 @ComponentScan("com.vip.eureka.lifecycle")
 @ComponentScan("com.vip.eureka.exception")
+@ComponentScan("com.vip.eureka.mvcextend")
+@ComponentScan("com.vip.eureka.homepage")
 @ComponentScan("com.vip.eureka.main")
 @ComponentScan(value="com.vip.eureka.exclude",excludeFilters={@ComponentScan.Filter(type= FilterType.ANNOTATION,value={Exclude.class})})
 @MapperScan(value="com.vip.eureka.mapper")

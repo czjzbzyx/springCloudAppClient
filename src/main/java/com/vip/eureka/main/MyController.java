@@ -5,9 +5,7 @@ package com.vip.eureka.main;
 
 import java.util.List;
 
-import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.oauth2.method.OAuth2MethodSecurityConfiguration;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
@@ -17,8 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import com.github.pagehelper.PageHelper;
 import com.vip.eureka.exception.BusinessException;
+
 
 /**
  * @author fang08.li
@@ -57,7 +55,7 @@ public class MyController {
 		
 		}catch(Exception e){
 			
-			throw new BusinessException(ExceptionUtils.getStackTrace(e));
+			throw new BusinessException(e.getMessage());
 		}
 		return "success";
 	}
@@ -84,7 +82,7 @@ public class MyController {
 	 
 	 
 	 @ResponseBody
-	    @RequestMapping(value="/{id}")
+	    @RequestMapping(value="/update/{id}")
 	    public String updateById(@PathVariable Long id)throws Exception{
 		 dataSourceService.updateById(id);
 	         
