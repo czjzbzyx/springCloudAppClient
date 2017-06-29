@@ -1,0 +1,7 @@
+1: spring boot starter 类增加注解
+    @ServletComponentScan("com.vip.eureka.servlet")
+    
+    
+2:新建一个filter类。并且加上注解@WebFilter("/*")
+
+	GlobalFilter。class

@@ -7,6 +7,7 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
@@ -35,6 +36,7 @@ import com.vip.eureka.exclude.Exclude;
 @ComponentScan("com.vip.eureka.main")
 @ComponentScan(value="com.vip.eureka.exclude",excludeFilters={@ComponentScan.Filter(type= FilterType.ANNOTATION,value={Exclude.class})})
 @MapperScan(value="com.vip.eureka.mapper")
+@ServletComponentScan("com.vip.eureka.servlet")
 
 //org.mybatis.spring.mapper.MapperScannerConfigurer
 public class Starter {
